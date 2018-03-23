@@ -8,6 +8,6 @@ public class App
 {
     public static void main( String[] args )
     {
-       Display window = new Display(350,500);
+       Display window = new Display(690,900);
     }
 }
