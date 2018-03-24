@@ -13,9 +13,21 @@ public class Display {
     GridBagConstraints gbc = new GridBagConstraints();
     JButton[][] allButtons = new JButton[3][3];
     final int id1, id2, id3, id4, id5, id6, id7, id8;
-    int p1,p2,p3,p4,p5,p6,p7,p8;
+    boolean stat1, stat2, stat3, stat4, stat5, stat6, stat7, stat8;
+    boolean stat9 = false;
+
 
     public Display(int width,int height){
+        stat1 =true;
+        stat2 =true;
+        stat3 =true;
+        stat4 =true;
+        stat5 =true;
+        stat6 =true;
+        stat7 =true;
+        stat8 =true;
+
+
         frame = new JFrame("PuzzleGame");
         frame.setSize(width,height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,6 +50,7 @@ public class Display {
             }}
         frame.remove(allButtons[2][2]);
 
+
         id1 = 1;
         id2 = 2;
         id3 = 3;
@@ -47,14 +60,6 @@ public class Display {
         id7 = 7;
         id8 = 8;
 
-        p1 = 1;
-        p2 = 2;
-        p3 = 3;
-        p4 = 4;
-        p5 = 5;
-        p6 = 6;
-        p7 = 7;
-        p8 = 8;
 
 
         allButtons[0][0].setIcon(new ImageIcon("E:\\IT\\JAVA\\PuzzleGame\\src\\main\\java\\kenazCode\\1.jpg"));
@@ -68,179 +73,544 @@ public class Display {
 
         frame.setVisible(true);
 
-        actionForThemAll(allButtons[0][0]);
-        actionForThemAll(allButtons[0][1]);
-        actionForThemAll(allButtons[0][2]);
-        actionForThemAll(allButtons[1][0]);
-        actionForThemAll(allButtons[1][1]);
-        actionForThemAll(allButtons[1][2]);
-        actionForThemAll(allButtons[2][0]);
-        actionForThemAll(allButtons[2][1]);
 
-
-    }
-    public void actionForThemAll(JButton buton){
-        final JButton fButton = buton;
-        buton.addActionListener(new ActionListener() {
+        allButtons[0][0].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                selectionButtonPressed(fButton);
+                selectionButtonPressed(allButtons[0][0]);
             }
         });
 
+        allButtons[0][1].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                selectionButtonPressed(allButtons[0][1]);
+            }
+        });
+        allButtons[0][2].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                selectionButtonPressed(allButtons[0][2]);
+            }
+        });
+        allButtons[1][0].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                selectionButtonPressed(allButtons[1][0]);
+            }
+        });
+        allButtons[1][1].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                selectionButtonPressed(allButtons[1][1]);
+            }
+        });
+        allButtons[1][2].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                selectionButtonPressed(allButtons[1][2]);
+            }
+        });
+        allButtons[2][0].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                selectionButtonPressed(allButtons[2][0]);
+            }
+        });
+        allButtons[2][1].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                selectionButtonPressed(allButtons[2][1]);
+            }
+        });
+
+
+
     }
+
 
     public void selectionButtonPressed(JButton buton){
 
         int row = (Integer) buton.getClientProperty("row");
         int col = (Integer) buton.getClientProperty("column");
-        int emptyI , emptyJ ;
-         if((Integer)buton.getClientProperty("row")==2 && (Integer)buton.getClientProperty("column") == 3){
-             for(int j = 0; j<8; j++){
-             for(int i = 0 ; i<8; i++) {
-             if((Integer)allButtons[i][j].getClientProperty("row") == 2  && (Integer) allButtons[i][j].getClientProperty("column") == 2){
 
-             }else if((Integer)allButtons[i][j].getClientProperty("row") == 1 && (Integer)allButtons[i][j].getClientProperty("column") == 3){
+         if((row == 2) && (col == 3)){
 
-                 }else if((Integer)allButtons[i][j].getClientProperty("row") == 3 && (Integer)allButtons[i][j].getClientProperty("column") == 3){
-
-                 }else
+             if(stat9 == false){
 
 
+                 gbc.gridy = 3;
+                 gbc.gridx = 3;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 3);
+                 buton.putClientProperty("row", 3);
+
+                 stat9 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton,gbc);
+                 frame.setVisible(true);
+
+
+             }else if(stat5 == false){
+
+
+                 gbc.gridy = 2;
+                 gbc.gridx = 2;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 2);
+                 buton.putClientProperty("row", 2);
+
+                 stat5 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton,gbc);
+                 frame.setVisible(true);
+
+             }else if(stat3 == false) {
+
+
+                 gbc.gridy = 1;
+                 gbc.gridx = 3;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 3);
+                 buton.putClientProperty("row", 1);
+
+                 stat3 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
              }
-             }
-         }/*else if((Integer)buton.getClientProperty("row")==3 && (Integer)buton.getClientProperty("column") == 3){
-            for(int j = 0; j<8; j++){
-                for(int i = 0 ; i < 8 ; i++) {
-                    if((Integer)allButtons[i][j].getClientProperty("row") != 2 && (Integer)allButtons[i][j].getClientProperty("column") != 3){
-                        gbc.gridy = 2;
-                        gbc.gridx = 3;
+             }else if((row == 3) && (col == 3)) {
 
-                        buton.putClientProperty("column", 3);
-                        buton.putClientProperty("row", 2);
+                 if (stat6 == false) {
 
-                        frame.remove(buton);
-                        frame.add(buton,gbc);
-                        frame.setVisible(true);
-                    }
+                     gbc.gridy = 2;
+                     gbc.gridx = 3;
+
+                     setbooleanOfButtons(buton, false);
+
+                     buton.putClientProperty("column", 3);
+                     buton.putClientProperty("row", 2);
+
+                     stat6 = true;
 
 
-                }
-            }
-        }else if((Integer)buton.getClientProperty("row")==3 && (Integer)buton.getClientProperty("column") == 3){
-             for(int j = 0; j<8; j++){
-                 for(int i = 0 ; i < 8 ; i++) {
-                     if((Integer)allButtons[i][j].getClientProperty("row") != 2 && (Integer)allButtons[i][j].getClientProperty("column") != 3){
-                         gbc.gridy = 2;
-                         gbc.gridx = 3;
+                     frame.remove(buton);
+                     frame.add(buton, gbc);
+                     frame.setVisible(true);
 
-                         buton.putClientProperty("column", 3);
-                         buton.putClientProperty("row", 2);
+                 } else if (stat8 == false) {
 
-                         frame.remove(buton);
-                         frame.add(buton,gbc);
-                         frame.setVisible(true);
-                     }
 
+                     gbc.gridy = 3;
+                     gbc.gridx = 2;
+
+                     setbooleanOfButtons(buton, false);
+
+                     buton.putClientProperty("column", 2);
+                     buton.putClientProperty("row", 3);
+
+                     stat8 = true;
+
+                     frame.remove(buton);
+                     frame.add(buton, gbc);
+                     frame.setVisible(true);
 
                  }
+             }else if((row == 2) && (col == 2)) {
+
+             if (stat6 == false) {
+
+                 gbc.gridy = 2;
+                 gbc.gridx = 3;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 3);
+                 buton.putClientProperty("row", 2);
+
+                 stat6 = true;
+
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             } else if (stat2 == false) {
+
+
+                 gbc.gridy = 1;
+                 gbc.gridx = 2;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 2);
+                 buton.putClientProperty("row", 1);
+
+                 stat2 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             }else if (stat4 == false) {
+
+
+                 gbc.gridy = 2;
+                 gbc.gridx = 1;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 1);
+                 buton.putClientProperty("row", 2);
+
+                 stat4 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             }else if (stat8 == false) {
+
+
+                 gbc.gridy = 3;
+                 gbc.gridx = 2;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 2);
+                 buton.putClientProperty("row", 3);
+
+                 stat8 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
              }
-         }else if((Integer)buton.getClientProperty("row")==3 && (Integer)buton.getClientProperty("column") == 3){
-             for(int j = 0; j<8; j++){
-                 for(int i = 0 ; i < 8 ; i++) {
-                     if((Integer)allButtons[i][j].getClientProperty("row") != 2 && (Integer)allButtons[i][j].getClientProperty("column") != 3){
-                         gbc.gridy = 2;
-                         gbc.gridx = 3;
+         }else if((row == 1) && (col == 3)) {
 
-                         buton.putClientProperty("column", 3);
-                         buton.putClientProperty("row", 2);
+             if (stat6 == false) {
 
-                         frame.remove(buton);
-                         frame.add(buton,gbc);
-                         frame.setVisible(true);
-                     }
+                 gbc.gridy = 2;
+                 gbc.gridx = 3;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 3);
+                 buton.putClientProperty("row", 2);
+
+                 stat6 = true;
 
 
-                 }
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             } else if (stat2 == false) {
+
+
+                 gbc.gridy = 1;
+                 gbc.gridx = 2;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 2);
+                 buton.putClientProperty("row", 1);
+
+                 stat2 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
              }
-         }else if((Integer)buton.getClientProperty("row")==3 && (Integer)buton.getClientProperty("column") == 3){
-             for(int j = 0; j<8; j++){
-                 for(int i = 0 ; i < 8 ; i++) {
-                     if((Integer)allButtons[i][j].getClientProperty("row") != 2 && (Integer)allButtons[i][j].getClientProperty("column") != 3){
-                         gbc.gridy = 2;
-                         gbc.gridx = 3;
+         }else if((row == 1) && (col == 2)) {
 
-                         buton.putClientProperty("column", 3);
-                         buton.putClientProperty("row", 2);
+             if (stat3 == false) {
 
-                         frame.remove(buton);
-                         frame.add(buton,gbc);
-                         frame.setVisible(true);
-                     }
+                 gbc.gridy = 1;
+                 gbc.gridx = 3;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 3);
+                 buton.putClientProperty("row", 1);
+
+                 stat3 = true;
 
 
-                 }
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             } else if (stat1 == false) {
+
+
+                 gbc.gridy = 1;
+                 gbc.gridx = 1;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 1);
+                 buton.putClientProperty("row", 1);
+
+                 stat1 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             } else if (stat5 == false) {
+
+
+                 gbc.gridy = 2;
+                 gbc.gridx = 2;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 2);
+                 buton.putClientProperty("row", 2);
+
+                 stat5 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
              }
-         }else if((Integer)buton.getClientProperty("row")==3 && (Integer)buton.getClientProperty("column") == 3){
-             for(int j = 0; j<8; j++){
-                 for(int i = 0 ; i < 8 ; i++) {
-                     if((Integer)allButtons[i][j].getClientProperty("row") != 2 && (Integer)allButtons[i][j].getClientProperty("column") != 3){
-                         gbc.gridy = 2;
-                         gbc.gridx = 3;
+         }else if((row == 1) && (col == 1)) {
 
-                         buton.putClientProperty("column", 3);
-                         buton.putClientProperty("row", 2);
+             if (stat2 == false) {
 
-                         frame.remove(buton);
-                         frame.add(buton,gbc);
-                         frame.setVisible(true);
-                     }
+                 gbc.gridy = 1;
+                 gbc.gridx = 2;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 2);
+                 buton.putClientProperty("row", 1);
+
+                 stat2 = true;
 
 
-                 }
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             } else if (stat4 == false) {
+
+
+                 gbc.gridy = 2;
+                 gbc.gridx = 1;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 1);
+                 buton.putClientProperty("row", 2);
+
+                 stat4 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
              }
-         }else if((Integer)buton.getClientProperty("row")==3 && (Integer)buton.getClientProperty("column") == 3){
-             for(int j = 0; j<8; j++){
-                 for(int i = 0 ; i < 8 ; i++) {
-                     if((Integer)allButtons[i][j].getClientProperty("row") != 2 && (Integer)allButtons[i][j].getClientProperty("column") != 3){
-                         gbc.gridy = 2;
-                         gbc.gridx = 3;
+         }else if((row == 2) && (col == 1)) {
 
-                         buton.putClientProperty("column", 3);
-                         buton.putClientProperty("row", 2);
+             if (stat1 == false) {
 
-                         frame.remove(buton);
-                         frame.add(buton,gbc);
-                         frame.setVisible(true);
-                     }
+                 gbc.gridy = 1;
+                 gbc.gridx = 1;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 1);
+                 buton.putClientProperty("row", 1);
+
+                 stat1 = true;
 
 
-                 }
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             } else if (stat5 == false) {
+
+
+                 gbc.gridy = 2;
+                 gbc.gridx = 2;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 2);
+                 buton.putClientProperty("row", 2);
+
+                 stat5 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             } else if (stat7 == false) {
+
+
+                 gbc.gridy = 3;
+                 gbc.gridx = 1;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 1);
+                 buton.putClientProperty("row", 3);
+
+                 stat7 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
              }
-         }else if((Integer)buton.getClientProperty("row")==3 && (Integer)buton.getClientProperty("column") == 3){
-             for(int j = 0; j<8; j++){
-                 for(int i = 0 ; i < 8 ; i++) {
-                     if((Integer)allButtons[i][j].getClientProperty("row") != 2 && (Integer)allButtons[i][j].getClientProperty("column") != 3){
-                         gbc.gridy = 2;
-                         gbc.gridx = 3;
+         }else if((row == 3) && (col == 2)) {
 
-                         buton.putClientProperty("column", 3);
-                         buton.putClientProperty("row", 2);
+             if (stat7 == false) {
 
-                         frame.remove(buton);
-                         frame.add(buton,gbc);
-                         frame.setVisible(true);
-                     }
+                 gbc.gridy = 3;
+                 gbc.gridx = 1;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 3);
+                 buton.putClientProperty("row", 1);
+
+                 stat7 = true;
 
 
-                 }
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             } else if (stat5 == false) {
+
+
+                 gbc.gridy = 2;
+                 gbc.gridx = 2;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 2);
+                 buton.putClientProperty("row", 2);
+
+                 stat5 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             } else if (stat9 == false) {
+
+
+                 gbc.gridy = 3;
+                 gbc.gridx = 3;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 3);
+                 buton.putClientProperty("row", 3);
+
+                 stat9 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
              }
-         }*/
-      //  gbc.gridx = 3;
-      //  gbc.gridy = 3;
+         }else if((row == 3) && (col == 1)) {
+
+             if (stat4 == false) {
+
+                 gbc.gridy = 2;
+                 gbc.gridx = 1;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 1);
+                 buton.putClientProperty("row", 2);
+
+                 stat4 = true;
+
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             } else if (stat8 == false) {
+
+
+                 gbc.gridy = 3;
+                 gbc.gridx = 2;
+
+                 setbooleanOfButtons(buton, false);
+
+                 buton.putClientProperty("column", 2);
+                 buton.putClientProperty("row", 3);
+
+                 stat8 = true;
+
+                 frame.remove(buton);
+                 frame.add(buton, gbc);
+                 frame.setVisible(true);
+
+             }
+         }
+
+         }
 
 
 
+    public boolean booleanOfButtons(JButton buton){
+        if((Integer)buton.getClientProperty("row") == 1 && (Integer)buton.getClientProperty("column") == 1    ){
+            return stat1;
+        }else if((Integer)buton.getClientProperty("row") == 1 && (Integer)buton.getClientProperty("column") == 2  ){
+            return stat2;
+        }else if((Integer)buton.getClientProperty("row") == 1 && (Integer)buton.getClientProperty("column") == 3  ){
+            return stat3;
+        }else if((Integer)buton.getClientProperty("row") == 2 && (Integer)buton.getClientProperty("column") == 1  ){
+            return stat4;
+        }else if((Integer)buton.getClientProperty("row") == 2 && (Integer)buton.getClientProperty("column") == 2  ){
+            return stat5;
+        }else if((Integer)buton.getClientProperty("row") == 2 && (Integer)buton.getClientProperty("column") == 3  ){
+            return stat6;
+        }else if((Integer)buton.getClientProperty("row") == 3 && (Integer)buton.getClientProperty("column") == 1  ){
+            return stat7;
+        }else if((Integer)buton.getClientProperty("row") == 3 && (Integer)buton.getClientProperty("column") == 2  ){
+            return stat8;
+        }else if((Integer)buton.getClientProperty("row") == 3 && (Integer)buton.getClientProperty("column") == 3  ){
+            return stat9;
+        }
+        return false;
+    }
 
+    public boolean setbooleanOfButtons(JButton buton, boolean trueFalse){
+        if((Integer)buton.getClientProperty("row") == 1 && (Integer)buton.getClientProperty("column") == 1    ){
+            stat1 = trueFalse;
+        }else if((Integer)buton.getClientProperty("row") == 1 && (Integer)buton.getClientProperty("column") == 2  ){
+            stat2 = trueFalse;
+        }else if((Integer)buton.getClientProperty("row") == 1 && (Integer)buton.getClientProperty("column") == 3  ){
+            stat3 = trueFalse;
+        }else if((Integer)buton.getClientProperty("row") == 2 && (Integer)buton.getClientProperty("column") == 1  ){
+            stat4 = trueFalse;
+        }else if((Integer)buton.getClientProperty("row") == 2 && (Integer)buton.getClientProperty("column") == 2  ){
+            stat5 = trueFalse;
+        }else if((Integer)buton.getClientProperty("row") == 2 && (Integer)buton.getClientProperty("column") == 3  ){
+            stat6 = trueFalse;
+        }else if((Integer)buton.getClientProperty("row") == 3 && (Integer)buton.getClientProperty("column") == 1  ){
+            stat7 = trueFalse;
+        }else if((Integer)buton.getClientProperty("row") == 3 && (Integer)buton.getClientProperty("column") == 2  ){
+            stat8 = trueFalse;
+        }else if((Integer)buton.getClientProperty("row") == 3 && (Integer)buton.getClientProperty("column") == 3  ){
+            stat9 = trueFalse;
+        }
+        return false;
     }
 
     public int definitionOfButtons(JButton buton){
