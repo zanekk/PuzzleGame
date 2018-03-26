@@ -27,6 +27,14 @@ public class Display {
         stat7 =true;
         stat8 =true;
 
+        id1 = 1;
+        id2 = 2;
+        id3 = 3;
+        id4 = 4;
+        id5 = 5;
+        id6 = 6;
+        id7 = 7;
+        id8 = 8;
 
         frame = new JFrame("PuzzleGame");
         frame.setSize(width,height);
@@ -43,24 +51,12 @@ public class Display {
                 allButtons[i][j] = new JButton();
                 gbc.gridx = j+1;
                 gbc.gridy = i+1;
-                frame.add(allButtons[i][j], gbc);
                 allButtons[i][j].setBorder(null);
                 allButtons[i][j].putClientProperty("column", j+1);
                 allButtons[i][j].putClientProperty("row", i+1);
             }}
-        frame.remove(allButtons[2][2]);
 
-
-        id1 = 1;
-        id2 = 2;
-        id3 = 3;
-        id4 = 4;
-        id5 = 5;
-        id6 = 6;
-        id7 = 7;
-        id8 = 8;
-
-
+        settingFirstQueue();
 
         allButtons[0][0].setIcon(new ImageIcon("E:\\IT\\JAVA\\PuzzleGame\\src\\main\\java\\kenazCode\\1.jpg"));
         allButtons[0][1].setIcon(new ImageIcon("E:\\IT\\JAVA\\PuzzleGame\\src\\main\\java\\kenazCode\\2.jpg"));
@@ -479,8 +475,8 @@ public class Display {
 
                  setbooleanOfButtons(buton, false);
 
-                 buton.putClientProperty("column", 3);
-                 buton.putClientProperty("row", 1);
+                 buton.putClientProperty("column", 1);
+                 buton.putClientProperty("row", 3);
 
                  stat7 = true;
 
@@ -634,13 +630,79 @@ public class Display {
     return 0;
     }
 
-    public void something(){
 
+    public void settingFirstQueue(){
+
+
+
+        gbc.gridy = 1;
+        gbc.gridx = 1;
+        allButtons[0][1].putClientProperty("column", 1);
+        allButtons[0][1].putClientProperty("row", 1);
+        frame.add(allButtons[0][1],gbc);
+
+
+        gbc.gridy = 1;
+        gbc.gridx = 2;
+        allButtons[1][2].putClientProperty("column", 2);
+        allButtons[1][2].putClientProperty("row", 1);
+        frame.add(allButtons[1][2],gbc);
+
+
+        gbc.gridy = 1;
+        gbc.gridx = 3;
+        allButtons[1][0].putClientProperty("column", 3);
+        allButtons[1][0].putClientProperty("row", 1);
+        frame.add(allButtons[1][0],gbc);
+
+
+        gbc.gridy = 2;
+        gbc.gridx = 1;
+        allButtons[2][0].putClientProperty("column", 1);
+        allButtons[2][0].putClientProperty("row", 2);
+        frame.add(allButtons[2][0],gbc);
+
+
+        gbc.gridy = 2;
+        gbc.gridx = 2;
+        allButtons[2][1].putClientProperty("column", 2);
+        allButtons[2][1].putClientProperty("row", 2);
+        frame.add(allButtons[2][1],gbc);
+
+
+        gbc.gridy = 2;
+        gbc.gridx = 3;
+        allButtons[0][0].putClientProperty("column", 3);
+        allButtons[0][0].putClientProperty("row", 2);
+        frame.add(allButtons[0][0],gbc);
+
+        gbc.gridy = 3;
+        gbc.gridx = 1;
+        allButtons[1][1].putClientProperty("column", 1);
+        allButtons[1][1].putClientProperty("row", 3);
+        frame.add(allButtons[1][1],gbc);
+
+        gbc.gridy = 3;
+        gbc.gridx = 2;
+        allButtons[0][2].putClientProperty("column", 2);
+        allButtons[0][2].putClientProperty("row", 3);
+        frame.add(allButtons[0][2],gbc);
+
+
+        frame.setVisible(true);
 
 
     }
 
+        public void checkingQueue (){
 
+
+
+
+
+
+
+        }
 
 
 
