@@ -1,10 +1,8 @@
 package kenazCode;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 
 public class Display {
@@ -12,7 +10,6 @@ public class Display {
     int rows , col;
     GridBagConstraints gbc = new GridBagConstraints();
     JButton[][] allButtons = new JButton[3][3];
-    final int id1, id2, id3, id4, id5, id6, id7, id8;
     boolean stat1, stat2, stat3, stat4, stat5, stat6, stat7, stat8;
     boolean stat9 = false;
 
@@ -27,21 +24,13 @@ public class Display {
         stat7 =true;
         stat8 =true;
 
-        id1 = 1;
-        id2 = 2;
-        id3 = 3;
-        id4 = 4;
-        id5 = 5;
-        id6 = 6;
-        id7 = 7;
-        id8 = 8;
 
         frame = new JFrame("PuzzleGame");
         frame.setSize(width,height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       // frame.setResizable(false);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
         GridBagLayout grid = new GridBagLayout();
-
         frame.setLayout(grid);
 
 
@@ -49,14 +38,16 @@ public class Display {
         for(int j = 0; j < 3;j++){
             for(int i = 0; i < 3; i++ ) {
                 allButtons[i][j] = new JButton();
+
                 gbc.gridx = j+1;
                 gbc.gridy = i+1;
+                frame.add(allButtons[i][j], gbc);
                 allButtons[i][j].setBorder(null);
                 allButtons[i][j].putClientProperty("column", j+1);
                 allButtons[i][j].putClientProperty("row", i+1);
             }}
 
-        settingFirstQueue();
+            settingFirstQueue();
 
         allButtons[0][0].setIcon(new ImageIcon("E:\\IT\\JAVA\\PuzzleGame\\src\\main\\java\\kenazCode\\1.jpg"));
         allButtons[0][1].setIcon(new ImageIcon("E:\\IT\\JAVA\\PuzzleGame\\src\\main\\java\\kenazCode\\2.jpg"));
@@ -70,12 +61,12 @@ public class Display {
         frame.setVisible(true);
 
 
+
         allButtons[0][0].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 selectionButtonPressed(allButtons[0][0]);
             }
         });
-
         allButtons[0][1].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 selectionButtonPressed(allButtons[0][1]);
@@ -142,6 +133,7 @@ public class Display {
                  frame.setVisible(true);
 
 
+
              }else if(stat5 == false){
 
 
@@ -175,8 +167,9 @@ public class Display {
                  frame.remove(buton);
                  frame.add(buton, gbc);
                  frame.setVisible(true);
-             }
-             }else if((row == 3) && (col == 3)) {
+             }        checkingQueue();
+
+         }else if((row == 3) && (col == 3)) {
 
                  if (stat6 == false) {
 
@@ -212,8 +205,9 @@ public class Display {
                      frame.add(buton, gbc);
                      frame.setVisible(true);
 
-                 }
-             }else if((row == 2) && (col == 2)) {
+                 }        checkingQueue();
+
+         }else if((row == 2) && (col == 2)) {
 
              if (stat6 == false) {
 
@@ -283,7 +277,8 @@ public class Display {
                  frame.add(buton, gbc);
                  frame.setVisible(true);
 
-             }
+             }        checkingQueue();
+
          }else if((row == 1) && (col == 3)) {
 
              if (stat6 == false) {
@@ -320,7 +315,8 @@ public class Display {
                  frame.add(buton, gbc);
                  frame.setVisible(true);
 
-             }
+             }        checkingQueue();
+
          }else if((row == 1) && (col == 2)) {
 
              if (stat3 == false) {
@@ -374,7 +370,8 @@ public class Display {
                  frame.add(buton, gbc);
                  frame.setVisible(true);
 
-             }
+             }        checkingQueue();
+
          }else if((row == 1) && (col == 1)) {
 
              if (stat2 == false) {
@@ -411,7 +408,8 @@ public class Display {
                  frame.add(buton, gbc);
                  frame.setVisible(true);
 
-             }
+             }        checkingQueue();
+
          }else if((row == 2) && (col == 1)) {
 
              if (stat1 == false) {
@@ -465,7 +463,8 @@ public class Display {
                  frame.add(buton, gbc);
                  frame.setVisible(true);
 
-             }
+             }        checkingQueue();
+
          }else if((row == 3) && (col == 2)) {
 
              if (stat7 == false) {
@@ -519,7 +518,8 @@ public class Display {
                  frame.add(buton, gbc);
                  frame.setVisible(true);
 
-             }
+             }        checkingQueue();
+
          }else if((row == 3) && (col == 1)) {
 
              if (stat4 == false) {
@@ -557,8 +557,10 @@ public class Display {
                  frame.setVisible(true);
 
              }
-         }
+             checkingQueue();
 
+         }
+        checkingQueue();
          }
 
 
@@ -609,26 +611,6 @@ public class Display {
         return false;
     }
 
-    public int definitionOfButtons(JButton buton){
-        if(buton == allButtons[0][0]){
-            return id1;
-        }else if(buton == allButtons[0][1]){
-            return id2;
-        }else if(buton == allButtons[0][2]){
-            return id3;
-        }else if(buton == allButtons[1][0]){
-            return id4;
-        }else if(buton == allButtons[1][1]){
-            return id5;
-        }else if(buton == allButtons[1][2]){
-            return id6;
-        }else if(buton == allButtons[2][0]){
-            return id7;
-        }else if(buton == allButtons[2][1]){
-            return id8;
-        }
-    return 0;
-    }
 
 
     public void settingFirstQueue(){
@@ -695,12 +677,35 @@ public class Display {
     }
 
         public void checkingQueue (){
+        int counter = 0;
+        JLabel gratulations = new JLabel();
+        JFrame secFrame;
+        //i=row j=column
 
+        gratulations.setText("         Congratulations !!!");
 
+        for(int j = 0; j < 3; j++){
+        for(int i = 0; i < 3; i++) {
+            if ((Integer)allButtons[i][j].getClientProperty("row") == (i+1) && (Integer)allButtons[i][j].getClientProperty("column") == (j+1) ) {
+                counter++;
+                System.out.print(counter);
+            }else if((Integer)allButtons[i][j].getClientProperty("row") == 3 && (Integer)allButtons[i][j].getClientProperty("column") == 3 ){
+               counter--;
+               System.out.print("-");
+            }
+        }}
 
+                if(counter == 9){
 
+                secFrame = new JFrame("Congratulation");
+                secFrame.add(gratulations);
+                secFrame.setSize(200,100);
+                secFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                secFrame.setLocationRelativeTo(null);
+                secFrame.setResizable(false);
+                secFrame.setVisible(true);
 
-
+            }
 
         }
 
